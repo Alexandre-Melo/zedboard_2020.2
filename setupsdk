@@ -1,0 +1,2 @@
+export TEMPLATECONF=${PWD}/meta-myzedboard/conf
+source ${PWD}/Xilinx/sources/core/oe-init-build-env "$@"

@@ -1,0 +1,36 @@
+LCONF_VERSION = "7"
+
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+
+BBLAYERS ?= " \
+  /home/auser/yocto/Xilinx/sources/core/meta \
+  /home/auser/yocto/Xilinx/sources/core/meta-poky \
+  /home/auser/yocto/Xilinx/sources/core/../meta-openembedded/meta-perl \
+  /home/auser/yocto/Xilinx/sources/core/../meta-openembedded/meta-python \
+  /home/auser/yocto/Xilinx/sources/core/../meta-openembedded/meta-filesystems \
+  /home/auser/yocto/Xilinx/sources/core/../meta-openembedded/meta-gnome \
+  /home/auser/yocto/Xilinx/sources/core/../meta-openembedded/meta-multimedia \
+  /home/auser/yocto/Xilinx/sources/core/../meta-openembedded/meta-networking \
+  /home/auser/yocto/Xilinx/sources/core/../meta-openembedded/meta-webserver \
+  /home/auser/yocto/Xilinx/sources/core/../meta-openembedded/meta-xfce \
+  /home/auser/yocto/Xilinx/sources/core/../meta-openembedded/meta-initramfs \
+  /home/auser/yocto/Xilinx/sources/core/../meta-openembedded/meta-oe \
+  /home/auser/yocto/Xilinx/sources/core/../meta-clang \
+  /home/auser/yocto/Xilinx/sources/core/../meta-browser \
+  /home/auser/yocto/Xilinx/sources/core/../meta-qt5 \
+  /home/auser/yocto/Xilinx/sources/core/../meta-xilinx/meta-xilinx-bsp \
+  /home/auser/yocto/Xilinx/sources/core/../meta-xilinx/meta-xilinx-pynq \
+  /home/auser/yocto/Xilinx/sources/core/../meta-xilinx/meta-xilinx-contrib \
+  /home/auser/yocto/Xilinx/sources/core/../meta-xilinx-tools \
+  /home/auser/yocto/Xilinx/sources/core/../meta-petalinux \
+  /home/auser/yocto/Xilinx/sources/core/../meta-virtualization \
+  /home/auser/yocto/Xilinx/sources/core/../meta-openamp \
+  /home/auser/yocto/Xilinx/sources/core/../meta-jupyter \
+  /home/auser/yocto/Xilinx/sources/core/../meta-vitis-ai \
+  /home/auser/yocto/meta-myzedboard \
+  "
+
+BBLAYERS_NON_REMOVABLE ?= " \
+    /home/auser/yocto/Xilinx/sources/core/meta \
+"
