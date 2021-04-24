@@ -233,6 +233,15 @@ CONF_VERSION = "1"
 PNBLACKLIST[qemu-native]="blacklist"
 PNBLACKLIST[nativesdk-qemu]="blacklist"
 
+# Remove wic image to avoid circular dependency
+IMAGE_FSTYPES_remove = "wic.qemu-sd"
+INITRAMFS_IMAGE = "petalinux-image-minimal"
+INITRAMFS_IMAGE_BUNDLE = "1"
+
 KERNEL_CLASSES = "kernel-fitimage"
 KERNEL_IMAGETYPES += "fitImage"
-#INITRAMFS_IMAGE = "myzedboard-image"
+
+UBOOT_ENTRYPOINT_zynq  = "0x8000"
+UBOOT_LOADADDRESS_zynq = "0x8000"
+
+#BIF_PARTITION_ATTR_remove = "bitstream"
