@@ -1,0 +1,22 @@
+From 1da440e7344f3ca406df3c227674b5a11c8299d9 Mon Sep 17 00:00:00 2001
+From: Alexandre Melo <abmelo@gmail.com>
+Date: Sat, 24 Apr 2021 23:05:09 +0000
+Subject: [PATCH] set a default bootcmd to load fat image.ub
+
+---
+ include/config_defaults.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/include/config_defaults.h b/include/config_defaults.h
+index d211a41ef2..e4af20354c 100644
+--- a/include/config_defaults.h
++++ b/include/config_defaults.h
+@@ -9,4 +9,8 @@
+ #ifndef _CONFIG_DEFAULTS_H_
+ #define _CONFIG_DEFAULTS_H_
+ 
++#define CONFIG_BOOTCOMMAND "fatload mmc 0 0x2000000 image.ub; \
++                            bootm 0x2000000; \
++                            "
++
+ #endif
