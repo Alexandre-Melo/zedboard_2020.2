@@ -7,7 +7,7 @@ Zedboard Yocto OS study based on release of Xilinx 2020.2 layers
 - 1 - (Only once) Download Xilinx repository with *./xilinx_repo_init.sh*
 - 2 - Run docker with *./setup.sh*. The first run will take a while, since all compilation dependencies will be downloaded. 
 - 3 - Prepare the compilation environment with *. setupsdk*.
-- 4 - Compile the image with *bitbake petalinux-image-minimal*. This will take a few hours on the first run, with long download hours.
+- 4 - Compile the image with *bitbake myzedboard-image*. This will take a few hours on the first run, with long download hours.
  wait.
 - 5 - In another console, outside of docker, run *./prepare_sd.sh* to send BOOT.bin and image.ub to the sdcard
 - 6 - Set jumpers of Zedboard JP[7...11] to [00110] to enable the boot by the SD card
@@ -37,7 +37,7 @@ Loading kernel from FIT Image at 02000000 ...
 
 ```
 
-The size of this image is:
+The size of this image is (compiled with bitbake petalinux-image-minimal as stated at Xilinx tutorial):
 - boot.bin: 1.4Mbytes -- U-boot and PL .bit.bin
 - image.ub: 29Mbytes -- kernel: 4Mbytes initramfs: 24Mbytes
 
@@ -66,6 +66,9 @@ https://hub.mender.io/t/how-to-create-custom-images-using-yocto-project/902/1
 
 This *image.bb was created considering the pending tasks
 
+The size of this image is (compiled with bitbake myzedboard-image):
+- boot.bin: 1.4Mbytes -- U-boot and PL .bit.bin
+- image.ub: 8.8Mbytes -- kernel: 4Mbytes initramfs: 4.5Mbytes
 
 
 ## Pending implementations
@@ -78,5 +81,5 @@ This *image.bb was created considering the pending tasks
 - [ ] add public keys to allow SSH
 - [ ] replace root by another user
 - [ ] remove uboot console, or find a other way to avoid changing uEnv
-- [ ] reduce the size of image.ub which is way too big
+- [x] reduce the size of image.ub which is way too big
 
