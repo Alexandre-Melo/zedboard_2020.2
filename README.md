@@ -37,6 +37,11 @@ Loading kernel from FIT Image at 02000000 ...
 
 ```
 
+The size of this image is:
+- boot.bin: 1.4Mbytes -- U-boot and PL .bit.bin
+- image.ub: 29Mbytes -- kernel: 4Mbytes initramfs: 24Mbytes
+
+
 ## Changing default environment of U-boot (instead of using boot.scr solution as suggested by Xilinx tutorial)
 
 Using devtool, as indicated at https://wiki.yoctoproject.org/wiki/TipsAndTricks/Patching_the_source_for_a_recipe
@@ -56,10 +61,10 @@ This created the patch for u-boot at meta-myzedboard. Basically the Default boot
 - [x] basic functional image
 - [ ] RSA boot, checking signatures of BOOT.bin and image.ub
 - [ ] AES of BOOT.bin and image.ub
-- [ ] find out howto use zImage, to reduce their size.
-- [ ] Remove PL bit.bin from BOOT.bin and send it to a lazy load, which did not work properly so far
+- [x] ~~find out howto use zImage, to reduce their size.~~ this is the default setup
+- [ ] Remove PL bit.bin from BOOT.bin and send it to a "lazy load", which did not work properly so far
 - [ ] add public keys to allow SSH
 - [ ] replace root by another user
 - [ ] remove uboot console, or find a other way to avoid changing uEnv
-
+- [ ] reduce the size of image.ub which is way too big
 
