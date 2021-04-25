@@ -20,7 +20,7 @@
 # of emulated machines available which can boot and run in the QEMU emulator:
 #
 # This sets the default machine if no other machine is selected:
-MACHINE ??= "zedboard-zynq7"
+MACHINE ??= "myzedboard"
 
 #
 # Where to place downloads
@@ -232,16 +232,3 @@ PMU_FIRMWARE_IMAGE_NAME = "pmu-firmware-${MACHINE}"
 CONF_VERSION = "1"
 PNBLACKLIST[qemu-native]="blacklist"
 PNBLACKLIST[nativesdk-qemu]="blacklist"
-
-# Remove wic image to avoid circular dependency
-IMAGE_FSTYPES_remove = "wic.qemu-sd"
-INITRAMFS_IMAGE = "petalinux-image-minimal"
-INITRAMFS_IMAGE_BUNDLE = "1"
-
-KERNEL_CLASSES = "kernel-fitimage"
-KERNEL_IMAGETYPES += "fitImage"
-
-UBOOT_ENTRYPOINT_zynq  = "0x8000"
-UBOOT_LOADADDRESS_zynq = "0x8000"
-
-#BIF_PARTITION_ATTR_remove = "bitstream"

@@ -22,7 +22,7 @@ Zedboard Yocto OS study based on release of Xilinx 2020.2 layers
 This was started following this tutorial:
 https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841862/Install+and+Build+with+Xilinx+Yocto
 
-A custom layer meta-myzedboard was created based on this tutorial:
+A custom layer meta-myzedboard was created based on this tutorial, without any additional recipe:
 https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/57836605/Creating+a+Custom+Xilinx+Yocto+Layer
 
 This is an intermediate result, which is capable of booting by manually entering commands at uboot shell
@@ -56,7 +56,19 @@ devtool reset u-boot-xlnx
 This created the patch for u-boot at meta-myzedboard. Basically the Default bootcmd variable was hardcoded to boot the fitimage (image.ub) at the SD Card.
 
 
-# Pending implementations
+#Creation of myzedboard-image.bb and machine/myzedboard.conf
+
+The machine/myzedboard.conf file was created based on 
+Xilinx/sources/meta-xilinx/meta-xilinx-bsp/conf/machine/zedboard-zynq7.conf
+
+The meta-myzedboard/recipes-core/images/myzedimage-image.bb was created, based on
+https://hub.mender.io/t/how-to-create-custom-images-using-yocto-project/902/1
+
+This *image.bb was created considering the pending tasks
+
+
+
+## Pending implementations
 
 - [x] basic functional image
 - [ ] RSA boot, checking signatures of BOOT.bin and image.ub
