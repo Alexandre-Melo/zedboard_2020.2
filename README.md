@@ -2,6 +2,21 @@
 
 Zedboard Yocto OS study based on release of Xilinx 2020.2 layers
 
+## How to use this
+
+1 - (Only once) Download Xilinx repository with *./xilinx_repo_init.sh*
+2 - Run docker with *./setup.sh*. The first run will take a while, since all compilation dependencies will be downloaded. 
+3 - Prepare the compilation environment with *. setupsdk*.
+4 - Compile the image with *bitbake petalinux-image-minimal*. This will take a few hours on the first run, with long download hours.
+ wait.
+5 - In another console, outside of docker, run *./prepare_sd.sh* to send BOOT.bin and image.ub to the sdcard
+6 - Set jumpers of Zedboard JP[7...11] to [00110] to enable the boot by the SD card
+7 - Insert the prepared sd card and use a console to watch the boot.
+
+
+
+# How was this developed?
+
 ## Getting started 
 
 This was started following this tutorial:
@@ -10,7 +25,7 @@ https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841862/Install+and+Build
 A custom layer meta-myzedboard was created based on this tutorial:
 https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/57836605/Creating+a+Custom+Xilinx+Yocto+Layer
 
-The result is an intermediate result, which is capable of booting by manually entering commands at uboot shell
+This is an intermediate result, which is capable of booting by manually entering commands at uboot shell
 
 ```
 [...]
@@ -33,6 +48,17 @@ devtool update-recipe -a ../meta-myzedboard u-boot-xlnx
 devtool reset u-boot-xlnx
 ```
 
-This created the patch for u-boot at meta-myzedboard
+This created the patch for u-boot at meta-myzedboard. Basically the Default bootcmd variable was hardcoded to boot the fitimage (image.ub) at the SD Card.
+
+
+# Pending implementations
+
+[ ] RSA boot, checking signatures of BOOT.bin and image.ub
+[ ] AES of BOOT.bin and image.ub
+[ ] find out howto use zImage, to reduce their size.
+[ ] Remove PL bit.bin from BOOT.bin and send it to a lazy load, which did not work properly so far
+[ ] add public keys to allow SSH
+[ ] replace root by another user
+[ ] remove uboot console, or find a other way to avoid changing uEnv
 
 
