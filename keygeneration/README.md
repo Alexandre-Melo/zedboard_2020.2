@@ -1,4 +1,4 @@
-#AES Key
+# AES Key
 
 *bootgen* can be used to generate AES keys, but this is a little bizarre how the procedure was documentated. 
 You need to follow https://www.xilinx.com/support/documentation/sw_manuals/xilinx2018_2/ug1283-bootgen-user-guide.pdf
@@ -19,7 +19,7 @@ You will to find the bootgen binary within docker. It is located at build/tmp/wo
 Bootgen will generate the aeskey.nky *if it cannot find the specified nky file* AND *if the [encryption=aes] is stated within the .bif file*.
 
 
-#RSA Authentication
+# RSA Authentication
 
 According to https://www.xilinx.com/support/documentation/application_notes/xapp1175_zynq_secure_boot.pdf
 
