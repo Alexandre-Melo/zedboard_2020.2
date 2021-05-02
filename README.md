@@ -56,7 +56,7 @@ devtool reset u-boot-xlnx
 This created the patch for u-boot at meta-myzedboard. Basically the Default bootcmd variable was hardcoded to boot the fitimage (image.ub) at the SD Card.
 
 
-#Creation of myzedboard-image.bb and machine/myzedboard.conf
+# Creation of myzedboard-image.bb and machine/myzedboard.conf
 
 The machine/myzedboard.conf file was created based on 
 Xilinx/sources/meta-xilinx/meta-xilinx-bsp/conf/machine/zedboard-zynq7.conf
@@ -69,6 +69,24 @@ This *image.bb was created considering the pending tasks
 The size of this image is (compiled with bitbake myzedboard-image):
 - boot.bin: 1.4Mbytes -- U-boot and PL .bit.bin
 - image.ub: 8.8Mbytes -- kernel: 4Mbytes initramfs: 4.5Mbytes
+
+
+# Adding AES key and RSA certificates
+
+First AES and RSA files were created according to keygeneration/README.md 
+
+Edited machine.conf, enabling aes and rsa.
+
+Added a .bbappend and extra new files to xilinx-bootbin at meta-myzedboard/recipes-bsp/bootbin:
+
+
+Using devtool did not work properly... maybe I failed understanding how to add extra files to it.
+```
+devtool modify xilinx-bootbin
+... generated and copied the aes and rsa files to newly generated workspace directory ...
+devtool update-recipe -a ../meta-myzedboard xilinx-bootbin
+devtool reset xilinx-bootbin
+```
 
 
 ## Pending implementations

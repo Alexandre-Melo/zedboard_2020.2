@@ -232,3 +232,5 @@ PMU_FIRMWARE_IMAGE_NAME = "pmu-firmware-${MACHINE}"
 CONF_VERSION = "1"
 PNBLACKLIST[qemu-native]="blacklist"
 PNBLACKLIST[nativesdk-qemu]="blacklist"
+
+
